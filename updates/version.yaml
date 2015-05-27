@@ -1,0 +1,4 @@
+1.0.0:
+    - First version of MJA.Mail Plugin
+    - create_email_log_table.php
+    - create_email_opens_table.php
