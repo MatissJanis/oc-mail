@@ -2,3 +2,5 @@
     - First version of MJA.Mail Plugin
     - create_email_log_table.php
     - create_email_opens_table.php
+1.0.1:
+    - Added Hungarian translation; Thanks @gergo85
