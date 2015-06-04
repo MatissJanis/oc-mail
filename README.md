@@ -8,7 +8,7 @@
 
 In order to install this plugin, please follow the steps below:
 
-1. Open up the October CMS backend (administration panel; http://localhost:8000/backend);
+1. Open up the OctoberCMS backend (administration panel; http://localhost:8000/backend);
 2. Go to `Settings` and then `Updates` in the left side panel;
 3. Click `Install plugins` and search for `Mja.Mail`;
 4. Once You have found the plugin, simply click on it and it will be installed.

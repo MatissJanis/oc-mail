@@ -3,33 +3,11 @@
 # ===================================
 
 title: mja.mail::lang.controllers.template.title
-list:
-    columns:
-        id:
-            label: mja.mail::lang.models.template.id
-            invisible: true
-        code:
-            label: mja.mail::lang.models.template.code
-        times_sent:
-            label: mja.mail::lang.models.template.sent
-            type: number
-            sortable: false
-        times_opened:
-            label: mja.mail::lang.models.template.opens
-            type: number
-            sortable: false
-        last_sent:
-            label: mja.mail::lang.models.template.last_send
-            type: datetime
-            sortable: false
-        last_open:
-            label: mja.mail::lang.models.template.last_open
-            type: datetime
-            sortable: false
-
+list: @/plugins/mja/mail/models/template/columns.yaml
 modelClass: System\Models\MailTemplate
 recordsPerPage: 20
 recordUrl: mja/mail/template/stats/:id
+noRecordsMessage: backend::lang.list.no_records
 showSetup: true
 defaultSort:
     column: id

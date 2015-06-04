@@ -6,12 +6,11 @@ use Backend\Widgets\Grid;
 
 class EmailGrid extends FormWidgetBase
 {
-
     public function widgetDetails()
     {
         return [
-            'name' => 'mja.mail::lang.formwidget.titla',
-            'description' => 'mja.mail::lang.formwidget.description',
+            'name'        => 'mja.mail::lang.formwidget.titla',
+            'description' => 'mja.mail::lang.formwidget.description'
         ];
     }
 

@@ -15,7 +15,7 @@ class Template extends Controller
     public $implement = [
         'Backend.Behaviors.FormController',
         'Backend.Behaviors.ListController',
-        'Backend.Behaviors.RelationController',
+        'Backend.Behaviors.RelationController'
     ];
 
     public $formConfig = 'config_form.yaml';
@@ -57,12 +57,12 @@ class Template extends Controller
             ->get();
 
         // Set placeholder data
-        for ($i=0; $i < 7; $i++) {
+        for ($i = 0; $i < 7; $i++) {
             $date = Carbon::createFromTime(null, 0, 0)->subDays($i);
 
             $return[$date->day] = (object) [
                 'ts' => $date,
-                'count' => 0,
+                'count' => 0
             ];
         }
 
