@@ -67,6 +67,8 @@ class Plugin extends PluginBase
                  ->get()
                  ->last();
 
+            if ($mail === null) return;
+
             $mail->response = $response;
             $mail->sent = true;
             $mail->save();
