@@ -9,7 +9,7 @@ class EmailGrid extends FormWidgetBase
     public function widgetDetails()
     {
         return [
-            'name'        => 'mja.mail::lang.formwidget.titla',
+            'name'        => 'mja.mail::lang.formwidget.title',
             'description' => 'mja.mail::lang.formwidget.description'
         ];
     }
