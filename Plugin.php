@@ -25,7 +25,40 @@ class Plugin extends PluginBase
             'description' => 'mja.mail::lang.plugin_description',
             'author'      => 'Matiss Janis Aboltins',
             'homepage'    => 'http://mja.lv/',
-            'icon'        => 'icon-envelope',
+            'icon'        => 'icon-envelope'
+        ];
+    }
+
+    public function registerNavigation()
+    {
+        return [
+            'mail' => [
+                'label' => 'mja.mail::lang.controllers.mail.title',
+                'url'   => Backend::url('mja/mail/mail'),
+                'icon'  => 'icon-paper-plane-o',
+                'sideMenu' => [
+                    'template' => [
+                        'label' => 'mja.mail::lang.controllers.template.title',
+                        'icon'  => 'icon-database',
+                        'url'   => Backend::url('mja/mail/template')
+                    ],
+                    'mail'    => [
+                        'label' => 'mja.mail::lang.controllers.mail.mails_sent',
+                        'icon'  => 'icon-paper-plane',
+                        'url'   => Backend::url('mja/mail/mail')
+                    ]
+                ]
+            ]
+        ];
+    }
+
+    public function registerFormWidgets()
+    {
+        return [
+            'Mja\Mail\FormWidgets\EmailGrid' => [
+                'label' => 'mja.mail::lang.formwidget.title',
+                'code'  => 'emailgrid'
+            ]
         ];
     }
 
@@ -48,12 +81,12 @@ class Plugin extends PluginBase
                 'body' => $swift->getBody(),
                 'sender' => $swift->getSender(),
                 'reply_to' => $swift->getReplyTo(),
-                'date' => $swift->getDate(),
+                'date' => $swift->getDate()
             ]);
 
             $url = Backend::url('mja/mail/image/image', [
-                'id' => $mail->id,
-                'hash' => $mail->hash . '.png',
+                'id'   => $mail->id,
+                'hash' => $mail->hash . '.png'
             ]);
 
             $swift->setBody($swift->getBody() . '<img src="'. $url .'" style="display:none;width:0;height:0;" />');
@@ -76,8 +109,9 @@ class Plugin extends PluginBase
 
         // Use for the mails sent list filter
         Event::listen('backend.filter.extendScopesBefore', function ($filter) {
-            if (! ($filter->getController() instanceof MailController))
+            if (! ($filter->getController() instanceof MailController)) {
                 return;
+            }
 
             $filter->scopes['views']['options'] = [];
 
@@ -134,38 +168,5 @@ class Plugin extends PluginBase
                 return $data;
             });
         });
-    }
-
-    public function registerNavigation()
-    {
-        return [
-            'mail' => [
-                'label'       => 'mja.mail::lang.controllers.mail.title',
-                'url'         => Backend::url('mja/mail/mail'),
-                'icon'        => 'icon-paper-plane-o',
-                'sideMenu' => [
-                    'template' => [
-                        'label' => 'mja.mail::lang.controllers.template.title',
-                        'icon'  => 'icon-database',
-                        'url'   => Backend::url('mja/mail/template'),
-                    ],
-                    'mail'    => [
-                        'label' => 'mja.mail::lang.controllers.mail.mails_sent',
-                        'icon'  => 'icon-paper-plane',
-                        'url'   => Backend::url('mja/mail/mail'),
-                    ],
-                ]
-            ]
-        ];
-    }
-
-    public function registerFormWidgets()
-    {
-        return [
-            'Mja\Mail\FormWidgets\EmailGrid' => [
-                'label' => 'mja.mail::lang.formwidget.title',
-                'code' => 'emailgrid',
-            ],
-        ];
     }
 }
