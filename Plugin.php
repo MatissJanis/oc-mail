@@ -36,6 +36,7 @@ class Plugin extends PluginBase
                 'label' => 'mja.mail::lang.controllers.mail.title',
                 'url'   => Backend::url('mja/mail/mail'),
                 'icon'  => 'icon-paper-plane-o',
+
                 'sideMenu' => [
                     'template' => [
                         'label'       => 'mja.mail::lang.controllers.template.title',
@@ -43,7 +44,7 @@ class Plugin extends PluginBase
                         'url'         => Backend::url('mja/mail/template'),
                         'permissions' => ['mja.mail.template']
                     ],
-                    'mail'    => [
+                    'mail' => [
                         'label'       => 'mja.mail::lang.controllers.mail.mails_sent',
                         'icon'        => 'icon-paper-plane',
                         'url'         => Backend::url('mja/mail/mail'),
