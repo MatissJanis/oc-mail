@@ -33,9 +33,11 @@ class Plugin extends PluginBase
     {
         return [
             'mail' => [
-                'label' => 'mja.mail::lang.controllers.mail.title',
-                'url'   => Backend::url('mja/mail/mail'),
-                'icon'  => 'icon-paper-plane-o',
+                'label'       => 'mja.mail::lang.controllers.mail.title',
+                'url'         => Backend::url('mja/mail/mail'),
+                'icon'        => 'icon-paper-plane-o',
+                'permissions' => ['mja.mail.*'],
+                'order'       => 500,
 
                 'sideMenu' => [
                     'template' => [
