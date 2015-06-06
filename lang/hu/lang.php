@@ -6,7 +6,12 @@ return [
 
     'formwidget' => [
         'title' => 'Levél rács',
-        'description' => 'Rácsok létrehozás a levelekhez',
+        'description' => 'Rácsok létrehozás a levelekhez'
+    ],
+
+    'permission' => [
+        'template' => 'Téma statisztika megtekintése',
+        'mail' => 'Levél statisztika megtekintése'
     ],
 
     'controllers' => [
@@ -19,14 +24,14 @@ return [
             'stats_sent' => 'Elküldött',
             'stats_bounced' => 'Visszapattanó',
             'stats_total_sent' => 'Összes elküldött',
-            'stats_total_opens' => 'Összes megnyitott',
+            'stats_total_opens' => 'Összes megnyitott'
         ],
         'template' => [
             'title' => 'Témák',
             'stats_title' => 'Statisztika',
             'opens' => 'Megnyitott levelek',
-            'opens_desc' => 'Az adott témával rendelkező levelek száma, amiket az elmúlt 7 napban nyitottak meg.',
-        ],
+            'opens_desc' => 'Az adott témával rendelkező levelek száma, amiket az elmúlt 7 napban nyitottak meg.'
+        ]
     ],
 
     'models' => [
@@ -53,13 +58,13 @@ return [
             'created_at' => 'Létrehozva',
             'updated_at' => 'Módosítva',
 
-            'show_bounced' => 'Csak a visszapattanók mutatása',
+            'show_bounced' => 'Csak a visszapattanók mutatása'
         ],
 
         'emailopens' => [
             'id' => 'Azonosító',
             'ip' => 'IP cím',
-            'created_at' => 'Dátum és idő',
+            'created_at' => 'Dátum és idő'
         ],
 
         'template' => [
@@ -68,7 +73,7 @@ return [
             'sent' => 'Elküldött levelek',
             'opens' => 'Megnyitások száma',
             'last_send' => 'Utoljára elküldés ideje',
-            'last_open' => 'Utoljára megnyitás ideje',
-        ],
-    ],
+            'last_open' => 'Utoljára megnyitás ideje'
+        ]
+    ]
 ];

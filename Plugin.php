@@ -62,6 +62,14 @@ class Plugin extends PluginBase
         ];
     }
 
+    public function registerPermissions()
+    {
+        return [
+            'mja.mail.template' => ['tab' => 'mja.mail::lang.controllers.mail.title', 'label' => 'mja.mail::lang.permission.template'],
+            'mja.mail.mail'     => ['tab' => 'mja.mail::lang.controllers.mail.title', 'label' => 'mja.mail::lang.permission.mail']
+       ];
+    }
+
     /**
      * Attach event listeners on boot.
      * @return void

@@ -22,6 +22,8 @@ class Mail extends Controller
     public $listConfig = 'config_list.yaml';
     public $relationConfig = 'config_relation.yaml';
 
+    public $requiredPermissions = ['mja.mail.mail'];
+
     public $bodyClass = 'compact-container';
 
     /**
