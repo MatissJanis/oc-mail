@@ -6,7 +6,12 @@ return [
 
     'formwidget' => [
         'title' => 'Email Grid',
-        'description' => 'Renders a grid of emails',
+        'description' => 'Renders a grid of emails'
+    ],
+
+    'permission' => [
+        'template' => 'View template stats',
+        'mail' => 'View mail stats'
     ],
 
     'controllers' => [
@@ -19,14 +24,14 @@ return [
             'stats_sent' => 'Sent',
             'stats_bounced' => 'Bounced',
             'stats_total_sent' => 'Total emails sent',
-            'stats_total_opens' => 'Total opens',
+            'stats_total_opens' => 'Total opens'
         ],
         'template' => [
             'title' => 'Templates',
             'stats_title' => 'Stats',
             'opens' => 'Email opens',
-            'opens_desc' => 'Shows how many emails with the current template have been opened in the last 7 days.',
-        ],
+            'opens_desc' => 'Shows how many emails with the current template have been opened in the last 7 days.'
+        ]
     ],
 
     'models' => [
@@ -53,13 +58,13 @@ return [
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
 
-            'show_bounced' => 'Show only bounced',
+            'show_bounced' => 'Show only bounced'
         ],
 
         'emailopens' => [
             'id' => 'ID',
             'ip' => 'IP',
-            'created_at' => 'Date and time',
+            'created_at' => 'Date and time'
         ],
 
         'template' => [
@@ -68,7 +73,7 @@ return [
             'sent' => 'Emails sent',
             'opens' => 'Times opened',
             'last_send' => 'Last time sent',
-            'last_open' => 'Last time opened',
-        ],
-    ],
+            'last_open' => 'Last time opened'
+        ]
+    ]
 ];

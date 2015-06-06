@@ -22,6 +22,8 @@ class Template extends Controller
     public $listConfig = 'config_list.yaml';
     public $relationConfig = 'config_relation.yaml';
 
+    public $requiredPermissions = ['mja.mail.template'];
+
     /**
      * Ensure that by default our menu sidebar is active
      */
