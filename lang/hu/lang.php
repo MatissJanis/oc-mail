@@ -31,7 +31,7 @@ return [
             'stats_title' => 'Statisztika',
             'opens' => 'Megnyitott levelek',
             'opens_desc' => 'Az adott témával rendelkező levelek száma, amiket az elmúlt 7 napban nyitottak meg.',
-        ]
+        ],
     ],
 
     'models' => [
