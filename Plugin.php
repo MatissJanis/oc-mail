@@ -38,14 +38,16 @@ class Plugin extends PluginBase
                 'icon'  => 'icon-paper-plane-o',
                 'sideMenu' => [
                     'template' => [
-                        'label' => 'mja.mail::lang.controllers.template.title',
-                        'icon'  => 'icon-database',
-                        'url'   => Backend::url('mja/mail/template')
+                        'label'       => 'mja.mail::lang.controllers.template.title',
+                        'icon'        => 'icon-database',
+                        'url'         => Backend::url('mja/mail/template'),
+                        'permissions' => ['mja.mail.template']
                     ],
                     'mail'    => [
-                        'label' => 'mja.mail::lang.controllers.mail.mails_sent',
-                        'icon'  => 'icon-paper-plane',
-                        'url'   => Backend::url('mja/mail/mail')
+                        'label'       => 'mja.mail::lang.controllers.mail.mails_sent',
+                        'icon'        => 'icon-paper-plane',
+                        'url'         => Backend::url('mja/mail/mail'),
+                        'permissions' => ['mja.mail.mail']
                     ]
                 ]
             ]
