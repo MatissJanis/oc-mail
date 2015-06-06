@@ -7,4 +7,4 @@
 1.0.2:
     - Fixed weird database saving bug; Code style improvements by @gergo85
 1.0.3:
-	- Added permissions; Thanks @gergo85
+    - Added permissions; Thanks @gergo85
