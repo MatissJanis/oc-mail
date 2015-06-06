@@ -9,6 +9,11 @@ return [
         'description' => 'Renders a grid of emails',
     ],
 
+    'permission' => [
+        'template' => 'View template stats',
+        'mail' => 'View mail stats',
+    ],
+
     'controllers' => [
         'mail' => [
             'title' => 'Mail log',

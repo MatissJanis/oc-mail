@@ -36,16 +36,19 @@ class Plugin extends PluginBase
                 'label' => 'mja.mail::lang.controllers.mail.title',
                 'url'   => Backend::url('mja/mail/mail'),
                 'icon'  => 'icon-paper-plane-o',
+
                 'sideMenu' => [
                     'template' => [
-                        'label' => 'mja.mail::lang.controllers.template.title',
-                        'icon'  => 'icon-database',
-                        'url'   => Backend::url('mja/mail/template')
+                        'label'       => 'mja.mail::lang.controllers.template.title',
+                        'icon'        => 'icon-database',
+                        'url'         => Backend::url('mja/mail/template'),
+                        'permissions' => ['mja.mail.template']
                     ],
-                    'mail'    => [
-                        'label' => 'mja.mail::lang.controllers.mail.mails_sent',
-                        'icon'  => 'icon-paper-plane',
-                        'url'   => Backend::url('mja/mail/mail')
+                    'mail' => [
+                        'label'       => 'mja.mail::lang.controllers.mail.mails_sent',
+                        'icon'        => 'icon-paper-plane',
+                        'url'         => Backend::url('mja/mail/mail'),
+                        'permissions' => ['mja.mail.mail']
                     ]
                 ]
             ]
@@ -60,6 +63,14 @@ class Plugin extends PluginBase
                 'code'  => 'emailgrid'
             ]
         ];
+    }
+
+    public function registerPermissions()
+    {
+        return [
+            'mja.mail.template' => ['tab' => 'mja.mail::lang.controllers.mail.title', 'label' => 'mja.mail::lang.permission.template'],
+            'mja.mail.mail'     => ['tab' => 'mja.mail::lang.controllers.mail.title', 'label' => 'mja.mail::lang.permission.mail']
+       ];
     }
 
     /**

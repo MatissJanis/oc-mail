@@ -9,6 +9,11 @@ return [
         'description' => 'Rácsok létrehozás a levelekhez',
     ],
 
+    'permission' => [
+        'template' => 'Téma statisztika megtekintése',
+        'mail' => 'Levél statisztika megtekintése',
+    ],
+
     'controllers' => [
         'mail' => [
             'title' => 'Levél naplózás',
