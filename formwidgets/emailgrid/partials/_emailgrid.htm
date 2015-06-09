@@ -3,12 +3,12 @@
         <?php foreach ($emails as $email => $name): ?>
 
             <?php if ($name): ?>
-                <?= $name ?><<?= $email ?>>
+                <?= $name ?> &lt;<?= $email ?>&gt;
             <?php else: ?>
                 <?= $email ?>
             <?php endif ?>
 
-            <?php end($emails); if ($email !== key($emails)): ?>, <?php endif ?>
+            <?php end($emails); if ($email !== key($emails)): ?>; <?php endif ?>
         <?php endforeach ?>
     <?php else: ?>
         None

@@ -27,7 +27,7 @@ class Email extends Model
     /**
      * @var array List of attribute names which are json encoded and decoded from the database.
      */
-    public $jsonable = ['to', 'cc', 'bcc'];
+    public $jsonable = ['to', 'cc', 'bcc', 'reply_to', 'sender'];
 
     /**
      * The attributes that should be casted to native types.

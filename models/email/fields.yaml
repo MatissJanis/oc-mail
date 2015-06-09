@@ -10,10 +10,12 @@ fields:
 
     sender:
         label: mja.mail::lang.models.email.sender
+        type: emailgrid
         span: left
 
     reply_to:
         label: mja.mail::lang.models.email.reply_to
+        type: emailgrid
         span: right
 
 tabs:
