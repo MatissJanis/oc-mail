@@ -5,10 +5,12 @@
 title: mja.mail::lang.controllers.template.title
 list: @/plugins/mja/mail/models/template/columns.yaml
 modelClass: System\Models\MailTemplate
-recordsPerPage: 20
 recordUrl: mja/mail/template/stats/:id
+
+recordsPerPage: 20
 noRecordsMessage: backend::lang.list.no_records
 showSetup: true
+
 defaultSort:
     column: id
     direction: desc

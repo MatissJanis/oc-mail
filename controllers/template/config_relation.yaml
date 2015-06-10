@@ -1,7 +1,9 @@
 # ===================================
 #  Relation Behavior Config
 # ===================================
+
 opens:
+
     label: mja.mail::lang.models.email.tab_opens
     readOnly: true
     view:
