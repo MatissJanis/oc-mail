@@ -19,7 +19,7 @@
                     </div>
                     <div class="scoreboard-item title-value">
                         <h4><?= e(trans('mja.mail::lang.models.email.sent')) ?></h4>
-                        <p class="<?= $formModel->sent ? 'positive' : 'negative' ?>"><?= $formModel->sent ? 'Yes' : 'No' ?></p>
+                        <p class="<?= $formModel->sent ? 'positive' : 'negative' ?>"><?= $formModel->sent ? e(trans('mja.mail::lang.models.email.yes')) : e(trans('mja.mail::lang.models.email.no')) ?></p>
                     </div>
                     <div class="scoreboard-item title-value">
                         <h4><?= e(trans('mja.mail::lang.models.email.times_opened')) ?></h4>

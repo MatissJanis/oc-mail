@@ -52,6 +52,8 @@ return [
             'date' => 'Date sent',
             'response' => 'Response',
             'sent' => 'Sent',
+            'yes' => 'Yes',
+            'no' => 'No',
             'times_opened' => 'Times Opened',
             'times_opened_desc' => 'By the client',
             'last_opened' => 'Last Opened',

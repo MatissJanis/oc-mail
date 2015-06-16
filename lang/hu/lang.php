@@ -18,8 +18,8 @@ return [
         'mail' => [
             'title' => 'Levél naplózás',
             'mails_sent' => 'Levelek',
-            'preview' => 'View mail information',
-            'return' => 'Vissza a levél listázáshoz',
+            'preview' => 'Információk',
+            'return' => 'Vissza a levél listához',
 
             'stats_sent' => 'Elküldött',
             'stats_bounced' => 'Visszapattanó',
@@ -29,8 +29,8 @@ return [
         'template' => [
             'title' => 'Témák',
             'stats_title' => 'Statisztika',
-            'opens' => 'Megnyitott levelek',
-            'opens_desc' => 'Az adott témával rendelkező levelek száma, amiket az elmúlt 7 napban nyitottak meg.',
+            'opens' => 'Olvasottság',
+            'opens_desc' => 'Az elmúlt 7 napban megnyitott levelek száma.',
         ],
     ],
 
@@ -51,7 +51,9 @@ return [
             'reply_to' => 'Válasz neki',
             'date' => 'Elküldés dátuma',
             'response' => 'Válasz',
-            'sent' => 'Küldés',
+            'sent' => 'Elküldve',
+            'yes' => 'igen',
+            'no' => 'nem',
             'times_opened' => 'Megnyitások száma',
             'times_opened_desc' => 'Az ügyfél által',
             'last_opened' => 'Utolsó megnyitás',
@@ -72,8 +74,8 @@ return [
             'code' => 'Kód',
             'sent' => 'Elküldött levelek',
             'opens' => 'Megnyitások száma',
-            'last_send' => 'Utoljára elküldés ideje',
-            'last_open' => 'Utoljára megnyitás ideje',
+            'last_send' => 'Utoljára elküldve',
+            'last_open' => 'Utoljára megnyitva',
         ],
     ],
 ];

@@ -39,7 +39,9 @@ columns:
 
     sent:
         label: mja.mail::lang.models.email.sent
-        type: switch
+        type: partial
+        path: @/plugins/mja/mail/models/email/_sent.htm
+        sortable: false
 
     times_opened:
         label: mja.mail::lang.models.email.times_opened
