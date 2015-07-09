@@ -10,3 +10,6 @@
     - Added permissions; Thanks @gergo85
 1.0.4:
     - Fixed jsonable field bug; Thanks @flip4bytes
+1.0.5:
+    - Code column is now nullable
+    - make_code_column_nullable.php
