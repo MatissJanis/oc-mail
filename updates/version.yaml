@@ -13,3 +13,6 @@
 1.0.5:
     - Code column is now nullable
     - make_code_column_nullable.php
+1.0.6:
+    - Body column is now nullable
+    - make_body_column_nullable.php
