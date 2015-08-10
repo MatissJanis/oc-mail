@@ -16,3 +16,5 @@
 1.0.6:
     - Body column is now nullable
     - make_body_column_nullable.php
+1.0.7:
+    - Fixed #14; thanks @flip4bytes

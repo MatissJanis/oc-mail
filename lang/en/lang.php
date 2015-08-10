@@ -54,6 +54,7 @@ return [
             'sent' => 'Sent',
             'yes' => 'Yes',
             'no' => 'No',
+            'unknown' => 'Unknown',
             'times_opened' => 'Times Opened',
             'times_opened_desc' => 'By the client',
             'last_opened' => 'Last Opened',
