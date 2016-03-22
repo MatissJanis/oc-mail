@@ -8,12 +8,14 @@ class MakeBodyColumnNullable extends Migration
 
     public function up()
     {
-        DB::statement('ALTER TABLE `mja_mail_email_log` MODIFY `body` text COLLATE utf8_unicode_ci NULL;');
+        Schema::table('mja_mail_email_log', function($table)
+        {
+            $table->string('body')->nullable()->change();
+        });
     }
 
     public function down()
     {
-        DB::statement('ALTER TABLE `mja_mail_email_log` MODIFY `body` text COLLATE utf8_unicode_ci NOT NULL;');
     }
 
 }
