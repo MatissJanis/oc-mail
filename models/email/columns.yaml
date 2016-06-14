@@ -40,7 +40,7 @@ columns:
     sent:
         label: mja.mail::lang.models.email.sent
         type: partial
-        path: @/plugins/mja/mail/models/email/_sent.htm
+        path: $/mja/mail/models/email/_sent.htm
         sortable: false
 
     times_opened:
