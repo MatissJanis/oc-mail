@@ -3,7 +3,7 @@
 # ===================================
 
 title: mja.mail::lang.controllers.mail.mails_sent
-list: @/plugins/mja/mail/models/email/columns.yaml
+list: $/mja/mail/models/email/columns.yaml
 modelClass: Mja\Mail\Models\Email
 recordUrl: mja/mail/mail/preview/:id
 

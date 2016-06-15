@@ -3,7 +3,7 @@
 # ===================================
 
 title: mja.mail::lang.controllers.template.title
-list: @/plugins/mja/mail/models/template/columns.yaml
+list: $/mja/mail/models/template/columns.yaml
 modelClass: System\Models\MailTemplate
 recordUrl: mja/mail/template/stats/:id
 

@@ -3,7 +3,7 @@
 # ===================================
 
 name: mja.mail::lang.controllers.mail.title
-form: @/plugins/mja/mail/models/email/fields.yaml
+form: $/mja/mail/models/email/fields.yaml
 modelClass: Mja\Mail\Models\Email
 defaultRedirect: mja/mail/mail
 
