@@ -40,7 +40,7 @@ class Mail extends Controller
         $this->vars['opens'] = EmailOpens::count();
         $this->vars['sent'] = Email::whereSent(true)->count();
         $this->vars['bounced'] = Email::whereSent(false)->count();
-        $this->vars['emails'] = Email::groupBy('code')->get();
+        $this->vars['emails'] = Email::select('code')->groupBy('code')->get();
 
         $this->asExtension('ListController')->index();
     }
