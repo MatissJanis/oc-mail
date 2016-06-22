@@ -18,3 +18,5 @@
     - make_body_column_nullable.php
 1.0.7:
     - Fixed #14; thanks @flip4bytes
+1.0.8:
+    - Minor improvements; thanks to @mplodowski
