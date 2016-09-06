@@ -4,6 +4,7 @@ use Backend;
 use Event;
 use Mail;
 use Mja\Mail\Models\Email;
+use GuzzleHttp\Psr7\Response;
 use Mja\Mail\Controllers\Mail as MailController;
 use System\Classes\PluginBase;
 use System\Models\MailTemplate;
@@ -114,6 +115,10 @@ class Plugin extends PluginBase
                  ->last();
 
             if ($mail === null) return;
+
+            if ($response instanceof Response) {
+                $response = $response->getBody()->getContents();
+            }
 
             $mail->response = $response;
             $mail->sent = true;
