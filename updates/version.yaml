@@ -20,3 +20,5 @@
     - Fixed #14; thanks @flip4bytes
 1.0.8:
     - Minor improvements; thanks to @mplodowski
+1.0.9:
+    - Fixed table creation query for newer MySQL versions.
