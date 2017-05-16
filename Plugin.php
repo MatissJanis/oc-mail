@@ -37,6 +37,7 @@ class Plugin extends PluginBase
                 'label'       => 'mja.mail::lang.controllers.mail.title',
                 'url'         => Backend::url('mja/mail/mail'),
                 'icon'        => 'icon-paper-plane-o',
+                'iconSvg'     => 'plugins/mja/mail/assets/images/icon.svg',
                 'permissions' => ['mja.mail.*'],
                 'order'       => 500,
 
@@ -71,8 +72,14 @@ class Plugin extends PluginBase
     public function registerPermissions()
     {
         return [
-            'mja.mail.template' => ['tab' => 'mja.mail::lang.controllers.mail.title', 'label' => 'mja.mail::lang.permission.template'],
-            'mja.mail.mail'     => ['tab' => 'mja.mail::lang.controllers.mail.title', 'label' => 'mja.mail::lang.permission.mail']
+            'mja.mail.template' => [
+                'tab'   => 'mja.mail::lang.controllers.mail.title',
+                'label' => 'mja.mail::lang.permission.template'
+            ],
+            'mja.mail.mail' => [
+                'tab'   => 'mja.mail::lang.controllers.mail.title',
+                'label' => 'mja.mail::lang.permission.mail'
+            ]
        ];
     }
 
@@ -83,19 +90,20 @@ class Plugin extends PluginBase
     public function boot()
     {
         // Before send: attach blank image that will track mail opens
-        Event::listen('mailer.prepareSend', function($self, $view, $message) {
+        Event::listen('mailer.prepareSend', function($self, $view, $message)
+        {
             $swift = $message->getSwiftMessage();
 
             $mail = Email::create([
-                'code' => $view,
-                'to' => $swift->getTo(),
-                'cc' => $swift->getCc(),
-                'bcc' => $swift->getBcc(),
-                'subject' => $swift->getSubject(),
-                'body' => $swift->getBody(),
-                'sender' => $swift->getSender(),
+                'code'     => $view,
+                'to'       => $swift->getTo(),
+                'cc'       => $swift->getCc(),
+                'bcc'      => $swift->getBcc(),
+                'subject'  => $swift->getSubject(),
+                'body'     => $swift->getBody(),
+                'sender'   => $swift->getSender(),
                 'reply_to' => $swift->getReplyTo(),
-                'date' => $swift->getDate()
+                'date'     => $swift->getDate()
             ]);
 
             $url = Backend::url('mja/mail/image/image', [
@@ -107,14 +115,17 @@ class Plugin extends PluginBase
         });
 
         // After send: log the result
-        Event::listen('mailer.send', function($self, $view, $message, $response) {
+        Event::listen('mailer.send', function($self, $view, $message, $response)
+        {
             $swift = $message->getSwiftMessage();
 
             $mail = Email::where('code', $view)
                  ->get()
                  ->last();
 
-            if ($mail === null) return;
+            if ($mail === null) {
+                return;
+            }
 
             if ($response instanceof Response) {
                 $response = $response->getBody()->getContents();
@@ -126,7 +137,8 @@ class Plugin extends PluginBase
         });
 
         // Use for the mails sent list filter
-        Event::listen('backend.filter.extendScopesBefore', function ($filter) {
+        Event::listen('backend.filter.extendScopesBefore', function ($filter)
+        {
             if (! ($filter->getController() instanceof MailController)) {
                 return;
             }
@@ -141,8 +153,8 @@ class Plugin extends PluginBase
 
         // Extend the mail template so that we could have the number of sent emails
         // in the template list of this plugin.
-        MailTemplate::extend(function($model) {
-
+        MailTemplate::extend(function($model)
+        {
             // Email relation
             $model->addDynamicMethod('emails', function() use ($model) {
                 return $model->hasMany('Mja\Mail\Models\Email', 'code', 'code');
@@ -171,8 +183,9 @@ class Plugin extends PluginBase
 
                 foreach ($emails as $email) {
                     $lo = $email->opens()->orderBy('id', 'desc')->first();
-                    if ($lo && ($lo->created_at < $last_open || $last_open === null))
+                    if ($lo && ($lo->created_at < $last_open || $last_open === null)) {
                         $last_open = $lo->created_at;
+                    }
                 }
 
                 return $last_open;
