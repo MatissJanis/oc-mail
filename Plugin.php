@@ -107,7 +107,7 @@ class Plugin extends PluginBase
         });
 
         // After send: log the result
-        Event::listen('mailer.send', function($self, $view, $message, $response) {
+        Event::listen('mailer.send', function($self, $view, $message) {
             $swift = $message->getSwiftMessage();
 
             $mail = Email::where('code', $view)
@@ -116,11 +116,6 @@ class Plugin extends PluginBase
 
             if ($mail === null) return;
 
-            if ($response instanceof Response) {
-                $response = $response->getBody()->getContents();
-            }
-
-            $mail->response = $response;
             $mail->sent = true;
             $mail->save();
         });
