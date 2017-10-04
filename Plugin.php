@@ -4,7 +4,6 @@ use Backend;
 use Event;
 use Mail;
 use Mja\Mail\Models\Email;
-use GuzzleHttp\Psr7\Response;
 use Mja\Mail\Controllers\Mail as MailController;
 use System\Classes\PluginBase;
 use System\Models\MailTemplate;
