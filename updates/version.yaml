@@ -31,3 +31,5 @@
     - make_to_nullable.php
 1.2.0:
     - Removed $response logging (version 420 of OctoberCMS does not support it); thanks @whsol.
+1.2.1:
+    - Fix code field max length - now only a max of 255 chars will be stored.
