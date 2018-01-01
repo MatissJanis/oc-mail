@@ -33,3 +33,5 @@
     - Removed $response logging (version 420 of OctoberCMS does not support it); thanks @whsol.
 1.2.1:
     - Fix code field max length - now only a max of 255 chars will be stored.
+1.2.2:
+    - Fix faulty migrations.
