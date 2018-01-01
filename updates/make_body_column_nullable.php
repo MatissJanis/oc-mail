@@ -1,5 +1,6 @@
 <?php namespace Mja\Mail\Updates;
 
+use Schema;
 use October\Rain\Database\Updates\Migration;
 
 class MakeBodyColumnNullable extends Migration
