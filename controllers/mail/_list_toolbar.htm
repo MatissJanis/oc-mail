@@ -20,9 +20,11 @@
             <p><?= $sent+$bounced ?></p>
         </div>
 
-        <div class="scoreboard-item title-value">
-            <h4><?= e(trans('mja.mail::lang.controllers.mail.stats_total_opens')) ?></h4>
-            <p><?= $opens ?></p>
-        </div>
+        <?php if ((bool) Mja\Mail\Models\Settings::get('log_email_opens', true) === true): ?>
+            <div class="scoreboard-item title-value">
+                <h4><?= e(trans('mja.mail::lang.controllers.mail.stats_total_opens')) ?></h4>
+                <p><?= $opens ?></p>
+            </div>
+        <?php endif ?>
     </div>
 </div>

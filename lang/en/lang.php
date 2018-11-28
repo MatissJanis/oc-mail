@@ -32,6 +32,11 @@ return [
             'opens' => 'Email opens',
             'opens_desc' => 'Shows how many emails with the current template have been opened in the last 7 days.',
         ],
+        'settings' => [
+            'title' => 'Settings',
+            'settings_title' => 'Email logger settings',
+            'description' => 'Manage email logger settings',
+        ],
     ],
 
     'models' => [
@@ -75,6 +80,13 @@ return [
             'opens' => 'Times opened',
             'last_send' => 'Last time sent',
             'last_open' => 'Last time opened',
+        ],
+
+        'settings' => [
+            'log_email_opens' => [
+                'label' => 'Log email opens',
+                'comment' => 'Adds a 1x1 invisible image to each email that logs the times an email is opened.'
+            ],
         ],
     ],
 ];

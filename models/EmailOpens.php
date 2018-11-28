@@ -29,13 +29,6 @@ class EmailOpens extends Model
     public $jsonable = [];
 
     /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
-
-    /**
      * @var array Relations
      */
     public $hasOne = [];

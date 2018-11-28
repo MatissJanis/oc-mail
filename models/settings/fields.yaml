@@ -1,0 +1,6 @@
+fields:
+    log_email_opens:
+        label: mja.mail::lang.models.settings.log_email_opens.label
+        comment: mja.mail::lang.models.settings.log_email_opens.comment
+        type: switch
+        default: true

@@ -4,8 +4,11 @@ use Backend;
 use Event;
 use Mail;
 use Mja\Mail\Models\Email;
+use Mja\Mail\Models\Settings;
 use Mja\Mail\Controllers\Mail as MailController;
+use Mja\Mail\Controllers\Template as TemplateController;
 use System\Classes\PluginBase;
+use System\Classes\SettingsManager;
 use System\Models\MailTemplate;
 
 /**
@@ -51,9 +54,28 @@ class Plugin extends PluginBase
                         'icon'        => 'icon-paper-plane',
                         'url'         => Backend::url('mja/mail/mail'),
                         'permissions' => ['mja.mail.mail']
-                    ]
+                    ],
+                    'settings' => [
+                        'label'       => 'mja.mail::lang.controllers.settings.title',
+                        'icon'        => 'icon-cog',
+                        'url'         => Backend::url('system/settings/update/mja/mail/settings'),
+                    ],
                 ]
             ]
+        ];
+    }
+
+    public function registerSettings()
+    {
+        return [
+            'settings' => [
+                'label'       => 'mja.mail::lang.controllers.settings.settings_title',
+                'description' => 'mja.mail::lang.controllers.settings.description',
+                'category'    => SettingsManager::CATEGORY_MAIL,
+                'icon'        => 'icon-paper-plane-o',
+                'class'       => Settings::class,
+                'keywords'    => 'email logger log stats statistics',
+            ],
         ];
     }
 
@@ -81,8 +103,10 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+        $logEmailOpens = (bool) Settings::get('log_email_opens', true);
+
         // Before send: attach blank image that will track mail opens
-        Event::listen('mailer.prepareSend', function($self, $view, $message) {
+        Event::listen('mailer.prepareSend', function($self, $view, $message) use ($logEmailOpens) {
             $swift = $message->getSwiftMessage();
 
             $mail = Email::create([
@@ -97,12 +121,14 @@ class Plugin extends PluginBase
                 'date' => $swift->getDate()
             ]);
 
-            $url = Backend::url('mja/mail/image/image', [
-                'id'   => $mail->id,
-                'hash' => $mail->hash . '.png'
-            ]);
+            if ($logEmailOpens) {
+                $url = Backend::url('mja/mail/image/image', [
+                    'id'   => $mail->id,
+                    'hash' => $mail->hash . '.png'
+                ]);
 
-            $swift->setBody($swift->getBody() . '<img src="'. $url .'" style="display:none;width:0;height:0;" />');
+                $swift->setBody($swift->getBody() . '<img src="'. $url .'" style="display:none;width:0;height:0;" />');
+            }
         });
 
         // After send: log the result
@@ -132,6 +158,21 @@ class Plugin extends PluginBase
                 $filter->scopes['views']['options'][$template->code] = $template->code;
             }
         });
+
+        if ($logEmailOpens === false) {
+            MailController::extendFormFields(function($controller) {
+                $controller->removeField('opens@preview');
+            });
+
+            MailController::extendListColumns(function($controller) {
+                $controller->removeColumn('times_opened');
+            });
+
+            TemplateController::extendListColumns(function($controller) {
+                $controller->removeColumn('times_opened');
+                $controller->removeColumn('last_open');
+            });
+        }
 
         // Extend the mail template so that we could have the number of sent emails
         // in the template list of this plugin.
@@ -174,10 +215,7 @@ class Plugin extends PluginBase
 
             // Get the email opens by template
             $model->addDynamicMethod('opens', function() use ($model) {
-                $model->setKeyName('code');
-                $data = $model->hasManyThrough('Mja\Mail\Models\EmailOpens', 'Mja\Mail\Models\Email', 'code', 'email_id');
-                $model->setKeyName('id');
-                return $data;
+                return $model->hasManyThrough('Mja\Mail\Models\EmailOpens', 'Mja\Mail\Models\Email', 'code', 'email_id', 'code');
             });
         });
     }

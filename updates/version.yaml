@@ -35,3 +35,5 @@
     - Fix code field max length - now only a max of 255 chars will be stored.
 1.2.2:
     - Fix faulty migrations.
+1.3.0:
+    - Add the ability to toggle email open logging via a switch in settings; fix template "open" graph.
