@@ -2,7 +2,6 @@
 
 use Backend\Classes\FormField;
 use Backend\Classes\FormWidgetBase;
-use Backend\Widgets\Grid;
 
 class EmailGrid extends FormWidgetBase
 {
@@ -10,7 +9,7 @@ class EmailGrid extends FormWidgetBase
     {
         return [
             'name'        => 'mja.mail::lang.formwidget.title',
-            'description' => 'mja.mail::lang.formwidget.description'
+            'description' => 'mja.mail::lang.formwidget.description',
         ];
     }
 

@@ -41,21 +41,21 @@ class Email extends Model
     /**
      * @var array Relations
      */
-    public $hasOne = [];
+    public $hasOne  = [];
     public $hasMany = [
         'opens' => 'Mja\Mail\Models\EmailOpens',
     ];
-    public $belongsTo = [];
+    public $belongsTo     = [];
     public $belongsToMany = [];
-    public $morphTo = [];
-    public $morphOne = [];
-    public $morphMany = [];
-    public $attachOne = [];
-    public $attachMany = [];
+    public $morphTo       = [];
+    public $morphOne      = [];
+    public $morphMany     = [];
+    public $attachOne     = [];
+    public $attachMany    = [];
 
     public function beforeCreate()
     {
-        $this->hash = md5(time().'some-salt'.rand(1, 10000));
+        $this->hash = md5(time() . 'some-salt' . rand(1, 10000));
     }
 
     public function logEmailOpened()
@@ -70,7 +70,7 @@ class Email extends Model
 
     public function getLastOpenedAttribute()
     {
-        $open =  $this->opens->last();
+        $open = $this->opens->last();
 
         if (!$open) {
             return null;

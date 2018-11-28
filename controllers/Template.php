@@ -3,7 +3,6 @@
 use BackendMenu;
 use Backend\Classes\Controller;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Mja\Mail\Models\EmailOpens;
 use System\Models\MailTemplate;
 
@@ -15,11 +14,11 @@ class Template extends Controller
     public $implement = [
         'Backend.Behaviors.FormController',
         'Backend.Behaviors.ListController',
-        'Backend.Behaviors.RelationController'
+        'Backend.Behaviors.RelationController',
     ];
 
-    public $formConfig = 'config_form.yaml';
-    public $listConfig = 'config_list.yaml';
+    public $formConfig     = 'config_form.yaml';
+    public $listConfig     = 'config_list.yaml';
     public $relationConfig = 'config_relation.yaml';
 
     public $requiredPermissions = ['mja.mail.template'];
@@ -43,14 +42,14 @@ class Template extends Controller
     {
         $this->asExtension('FormController')->preview($recordId, 'stats');
 
-        $template = MailTemplate::findOrFail($recordId);
+        $template               = MailTemplate::findOrFail($recordId);
         $this->vars['lastWeek'] = $this->getOpensLastWeek($template);
-        $this->vars['lastTs'] = end($this->vars['lastWeek'])->ts;
+        $this->vars['lastTs']   = end($this->vars['lastWeek'])->ts;
     }
 
     protected function getOpensLastWeek(MailTemplate $template)
     {
-        $return = [];
+        $return     = [];
         $emailOpens = new EmailOpens;
 
         $opens = $template->opens()
@@ -63,8 +62,8 @@ class Template extends Controller
             $date = Carbon::createFromTime(null, 0, 0)->subDays($i);
 
             $return[$date->day] = (object) [
-                'ts' => $date,
-                'count' => 0
+                'ts'    => $date,
+                'count' => 0,
             ];
         }
 

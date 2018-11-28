@@ -31,15 +31,15 @@ class EmailOpens extends Model
     /**
      * @var array Relations
      */
-    public $hasOne = [];
-    public $hasMany = [];
-    public $belongsTo = [];
+    public $hasOne        = [];
+    public $hasMany       = [];
+    public $belongsTo     = [];
     public $belongsToMany = [];
-    public $morphTo = [];
-    public $morphOne = [];
-    public $morphMany = [];
-    public $attachOne = [];
-    public $attachMany = [];
+    public $morphTo       = [];
+    public $morphOne      = [];
+    public $morphMany     = [];
+    public $attachOne     = [];
+    public $attachMany    = [];
 
     public function beforeCreate()
     {
