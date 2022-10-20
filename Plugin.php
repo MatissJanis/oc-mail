@@ -107,18 +107,18 @@ class Plugin extends PluginBase
 
         // Before send: attach blank image that will track mail opens
         Event::listen('mailer.prepareSend', function ($self, $view, $message) use ($logEmailOpens) {
-            $swift = $message->getSwiftMessage();
+            $symfony = $message->getSymfonyMessage();
 
             $mail = Email::create([
                 'code'     => $view ? substr($view, 0, 255) : null,
-                'to'       => $swift->getTo(),
-                'cc'       => $swift->getCc(),
-                'bcc'      => $swift->getBcc(),
-                'subject'  => $swift->getSubject(),
-                'body'     => $swift->getBody(),
-                'sender'   => $swift->getSender(),
-                'reply_to' => $swift->getReplyTo(),
-                'date'     => $swift->getDate(),
+                'to'       => $symfony->getTo(),
+                'cc'       => $symfony->getCc(),
+                'bcc'      => $symfony->getBcc(),
+                'subject'  => $symfony->getSubject(),
+                'body'     => $symfony->getHtmlBody(),
+                'sender'   => $symfony->getSender(),
+                'reply_to' => $symfony->getReplyTo(),
+                'date'     => $symfony->getDate()
             ]);
 
             if ($logEmailOpens) {
@@ -127,13 +127,13 @@ class Plugin extends PluginBase
                     'hash' => $mail->hash . '.png',
                 ]);
 
-                $swift->setBody($swift->getBody() . '<img src="' . $url . '" style="display:none;width:0;height:0;" />');
+                $symfony->setBody($symfony->html($symfony->getHtmlBody() . '<img src="'. $url .'" style="display:none;width:0;height:0;" />')->getBody());
             }
         });
 
         // After send: log the result
         Event::listen('mailer.send', function ($self, $view, $message) {
-            $swift = $message->getSwiftMessage();
+            $symfony = $message->getSymfonyMessage();
 
             $mail = Email::where('code', $view)
                 ->get()
